@@ -21,15 +21,15 @@ const contacts = useSelector(getContacts);
 
 
 
-    const handleSaveContact = (values, actions) => {
+    const handleSaveContact = (values, {resetForm}) => {
         const normalizedName = values.name.toLowerCase();
         const findName = contacts.find(({name}) => name.toLowerCase() === normalizedName);
 
         if (findName) {
-            return  alert(`${contacts.name} is already in contacts`)
+            return  alert(`${values.name} is already in contacts`)
            }
            dispatch(addContact(values));
-           actions.resetForm();
+           resetForm();
       }
      
     return (
