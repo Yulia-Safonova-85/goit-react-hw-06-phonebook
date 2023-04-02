@@ -15,7 +15,7 @@ import { nanoid } from "nanoid";
     reducers: {
         addContact: {
             reducer(state, action) {
-              state.push(action.payload);
+              state.contacts.push(action.payload);
             },
             prepare(name, number) {
               return {

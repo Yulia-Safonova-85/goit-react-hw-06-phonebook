@@ -10,8 +10,8 @@ export const ContactList = () => {
 
     const findContact = () => {
     const normalizedFilter = filter.toLowerCase();
-    return contacts.filter(({name}) =>
-        name.toLowerCase().includes(normalizedFilter)
+    return contacts.filter(contact =>
+        contact.name.toLowerCase().includes(normalizedFilter)
       );
         }
      
@@ -20,8 +20,10 @@ export const ContactList = () => {
     return (
         <div>
             <List>
-                {findFilterContacts.map(contact => (
+                {findFilterContacts.map(contact => {
+                    return (
                     <ContactsItem key ={contact.id} contact={contact}/>)
+                }
                 )}
             </List>
         </div>
