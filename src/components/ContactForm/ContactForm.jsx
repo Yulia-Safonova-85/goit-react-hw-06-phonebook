@@ -3,8 +3,7 @@ import { Formik, Field, } from 'formik';
 import * as Yup from 'yup';
 import {FormField, Form,ErrorMessage} from './ContactForm.styled';
 import { useDispatch,useSelector } from 'react-redux';
-import { getContacts } from "redux/selectors";
-import { addContact } from 'redux/slice';
+import { addContact,getContacts } from 'redux/ContactSlice';
 
 const schema = Yup.object().shape({
    name: Yup.string()
@@ -19,9 +18,7 @@ export const ContactForm = () => {
 const dispatch = useDispatch();
 const contacts = useSelector(getContacts);
 
-
-
-    const handleSaveContact = (values, {resetForm}) => {
+    const handleSaveContact = (values, actions) => {
         const normalizedName = values.name.toLowerCase();
         const findName = contacts.find(({name}) => name.toLowerCase() === normalizedName);
 
@@ -29,7 +26,7 @@ const contacts = useSelector(getContacts);
             return  alert(`${values.name} is already in contacts`)
            }
            dispatch(addContact(values));
-           resetForm();
+           actions.resetForm();
       }
      
     return (

@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter } from "redux/slice";
-import { getFilter } from "redux/selectors";
+import {setFilterValue, getFilter } from 'redux/FilterSlice';
 import { FindFilter } from "./Filter.styled";
 
 
@@ -9,7 +8,7 @@ import { FindFilter } from "./Filter.styled";
  const filter = useSelector(getFilter);
 
 const  changeFilter = evt => {
-dispatch(setFilter(evt.target.value ));
+dispatch(setFilterValue(evt.target.value ));
 
   };
 
